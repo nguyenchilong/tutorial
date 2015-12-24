@@ -1,0 +1,58 @@
+div.modal.fade.modalProfiles(tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel")
+    div.modal-dialog(role="document")
+        div.modal-content
+            //div.modal-header
+                button.close(type="button" data-dismiss="modal" aria-label="Close"): span(aria-hidden="true") &times;
+                h4.modal-title(id="gridSystemModalLabel") User Profile
+            div.modal-body
+                div.row.headerProfile
+                    div.picProfile: img(src="#")
+                    div.infoProfile
+                        p
+                            h2#fullname
+                        p
+                            i.fa.fa-envelope-o
+                            label#pemail
+                        p
+                            i.fa.fa-phone
+                            label#pphone
+                        //p
+                            i.fa.fa-facebook
+                            a#pfacebook(href="#")
+                        //p
+                            i.fa.fa-linkedin
+                            a#linkedin(href="#")
+                        //p
+                            i.fa.fa-twitter
+                            a#twitter(href="#")
+                div.row
+                    // Nav tabs
+                    ul(class="nav nav-tabs" role="tablist")
+                        li(role="presentation" class="active")
+                            a(href="#listOrders" aria-controls="listOrders" role="tab" data-toggle="tab") List Orders
+                        //li(role="presentation")
+                            a(href="#other" aria-controls="other" role="tab" data-toggle="tab") Other Content
+                    // Tab panes
+                    .tab-content
+                        div(role="tabpanel" class="tab-pane fade in perTab active" id="listOrders")
+                        //div(role="tabpanel" class="tab-pane fade" id="other")
+            div.modal-footer
+                button.btn.btn-default(type="button" data-dismiss="modal") Close
+
+
+
+
+//EmailAddress: 'nkhim86@gmail.com',
+//UserID: '393',
+//PhoneNumber: '94688765',
+//FirstName: 'Nyuk Khim Lim',
+//Gender: 'female',
+//Birthday: '0000-00-00',
+//ProfilePictureSource: 'https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg',
+//OrderID: '976',
+//OrderDate: '2015-12-09 16:15:00',
+//TransactionID: 'a4a6x55-9gzr0v-igyn8dow-1-ihyjk50i-iqlr',
+//CollectionTime: '2015-12-10 14:48:00',
+//StatusName: 'Ordered',
+//TransactionValue: '19.5',
+//Currency: 'SGD',

@@ -1,0 +1,9 @@
+- _user = typeof(udata) != 'undefined' ? udata : {}
+header(class="header navbar navbar-default navbar-fixed-top")
+    .container
+        div(class="logo col-md-3"): img(src="/icons/logo.png")
+        div(class="infoLogin col-md-9")
+            b #{_user.FirstName}
+            br
+            button(class="btn btn-success btnSet") Settings
+            a(class="btn btn-danger" href="/exit_pos") Exit

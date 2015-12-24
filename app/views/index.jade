@@ -1,0 +1,106 @@
+
+extends ./layouts/default
+block title
+    title #{title}
+block contents
+    .container
+        h3.mainTitle POS SYSTEM
+        section.mainContent
+            .row
+                // Nav tabs
+                ul(class="nav nav-tabs" role="tablist")
+                    li(role="presentation" class="active")
+                        a(href="#currentpos" aria-controls="currentpos" role="tab" data-toggle="tab") Current Orders In Queue
+                        span.badge.badge-danger.customBadge #{totalCurrentOrders || 0}
+                    li(role="presentation")
+                        a(href="#nearpos" aria-controls="nearpos" role="tab" data-toggle="tab") Customers Near POS
+                        span.badge.badge-danger.customBadge #{totalCustomers || 0}
+                // Tab panes
+                .tab-content
+                    div(role="tabpanel" class="tab-pane fade in active" id="currentpos")
+                        table(id="table_currentpos" class="listOrders display" cellspacing="0" width="100%")
+                            caption Current Orders In Queue
+                            thead
+                                tr
+                                    th= 'Profile Pic'
+                                    th= 'Name'
+                                    th= 'Order ID'
+                                    th= 'Current Orders'
+                                    th= 'PassCode'
+                                    th= 'Status'
+                                    th= 'Action'
+                            tbody
+                                if(currentOrders.items != undefined)
+                                    each val, index in currentOrders.items
+                                        tr.lines(rel="#{val.UserID}")
+                                            td.tdImg
+                                                div.display-hide.jsonPopup #{JSON.stringify(val)}
+                                                a.showProfile(href="javascript:void(0);")
+                                                    img.picProfile(src="#{val.ProfilePictureSource}")
+                                            td
+                                                a.showProfile(href="javascript:void(0);") #{val.FirstName}
+                                            td= val.OrderID
+                                            td.colList
+                                                ul
+                                                    if(val.orderDetail != undefined)
+                                                        - var _detailList = ''
+                                                        each detail in val.orderDetail
+                                                            li
+                                                                - var _size = ''
+                                                                - _detailList = '- '+detail.MenuName
+                                                                if(detail.Addon != undefined)
+                                                                    - _add = JSON.parse(detail.Addon)
+                                                                    each a in _add
+                                                                        - _size += a.addonName+' | '
+                                                                    - _size = _size.substr(0, _size.length - 2)
+                                                                    - _size = ((_size != '') ? ','+_size : '')
+                                                                - _detailList += _size+','+detail.VariantName
+                                                                | #{_detailList}
+                                            td= ''
+                                            td= val.StatusName
+                                            td= 'action'
+                    // ./ end tab current orders
+                    div(role="tabpanel" class="tab-pane fade" id="nearpos")
+                        table(id="table_nearpos" class="listOrders display" cellspacing="0" width="100%")
+                            caption Customers Near POS
+                            thead
+                                tr
+                                    th= 'Profile Pic'
+                                    th= 'Name'
+                                    th= 'Order ID'
+                                    th= 'Current Orders'
+                                    th= 'PassCode'
+                                    th= 'Status'
+                                    th= 'Action'
+                            tbody
+                                if(customers.items != undefined)
+                                    each val, index in customers.items
+                                        tr.lines(rel="#{val.UserID}")
+                                            td.tdImg
+                                                div.display-hide.jsonPopup #{JSON.stringify(val)}
+                                                a.showProfile(href="javascript:void(0);")
+                                                    img.picProfile(src="#{val.ProfilePictureSource}")
+                                            td
+                                                a.showProfile(href="javascript:void(0);") #{val.FirstName}
+                                            td= val.OrderID
+                                            td.colList
+                                                ul
+                                                    if(val.orderDetail != undefined)
+                                                        - var _detailList = ''
+                                                        each detail in val.orderDetail
+                                                            li
+                                                                - var _size = ''
+                                                                - _detailList = '- '+detail.MenuName
+                                                                if(detail.Addon != undefined)
+                                                                    - _add = JSON.parse(detail.Addon)
+                                                                    each a in _add
+                                                                        - _size += a.addonName+' | '
+                                                                    - _size = _size.substr(0, _size.length - 2)
+                                                                    - _size = ((_size != '') ? ','+_size : '')
+                                                                - _detailList += _size+','+detail.VariantName
+                                                                | #{_detailList}
+                                            td= ''
+                                            td= val.StatusName
+                                            td= 'action'
+                    // ./ end tab near pos ==================================
+        .clearfix &nbsp;

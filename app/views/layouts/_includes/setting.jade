@@ -1,0 +1,55 @@
+- _user = typeof(udata) != 'undefined' ? udata : {}
+- _form = typeof(fdata) != 'undefined' ? fdata : {}
+div.modal.fade.modal-settings(tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel")
+    div.modal-dialog(role="document")
+        div.modal-content
+            form.form-horizontal(action="/settings" method="post")#formSettings
+                div.modal-header
+                    button.close(type="button" data-dismiss="modal" aria-label="Close"): span(aria-hidden="true") &times;
+                    h4.modal-title(id="gridSystemModalLabel") Setting Form
+                div.modal-body
+                    input(type="hidden" name="_token" id="_token" value="#{_user.Token}")
+                    div.form-group
+                        label.col-sm-4.control-label API Url
+                        div.col-sm-8
+                            input.form-control(type="text" value="#{_form.apiUrl || 'quickorder.local'}" name="apiUrl" id="apiUrl" placeholder="Enter api url here ...")
+                    div.form-group
+                        label.col-sm-4.control-label Outlet ID
+                        div.col-sm-8
+                            input.form-control(type="text" value="#{_form.outletID || '38'}" name="outletID" id="outletID" placeholder="Enter outlet id here ...")
+                    div.form-group
+                        label.col-sm-4.control-label POS Terminal ID
+                        div.col-sm-8
+                            input.form-control(type="text" value="#{_form.terminalID || ''}" name="terminalID" id="terminalID" placeholder="Enter POS terminal id here ...")
+                    div.form-group
+                        label.col-sm-4.control-label Beacon ID...
+                        div.col-sm-8
+                            input.form-control(type="text" value="#{_form.beaconid1 || '43'}" name="beaconid1" id="beaconid1" placeholder="Enter beacon id here ...")
+                    div.form-group
+                        label.col-sm-4.control-label Beacon ID...
+                        div.col-sm-8
+                            input.form-control(type="text" value="#{_form.beaconid2 || ''}" name="beaconid2" id="beaconid2" placeholder="Enter beacon id here ...")
+                    div.form-group
+                        label.col-sm-4.control-label Beacon ID...
+                        div.col-sm-8
+                            input.form-control(type="text" value="#{_form.beaconid3 || ''}" name="beaconid3" id="beaconid3" placeholder="Enter beacon id here ...")
+                    div.form-group
+                        label.col-sm-4.control-label Pull users refresh rate (seconds)
+                        div.col-sm-8
+                            input.form-control(type="text" value="#{_form.refreshTime || '15'}" name="refreshTime" id="refreshTime" placeholder="Enter time for refresh(seconds) here ...")
+                    div.form-group
+                        label.col-sm-4.control-label Pull users since last (min)
+                        div.col-sm-8
+                            input.form-control(type="text" value="#{_form.lastTime || '10'}" name="lastTime" id="lastTime" placeholder="Enter time for last user(min) here ...")
+                    //div.form-group
+                        label.col-sm-4.control-label Current POS
+                        div.groupRadio.col-sm-8
+                            label
+                                input(type="radio" value="epoint_pos" name="rCurrentPos" checked=_form.rCurrentPos == 'epoint_pos' || true)
+                                | ePoint
+                            label
+                                input(type="radio" value="vend_pos" name="rCurrentPos" checked=_form.rCurrentPos == 'vend_pos')
+                                | Vend
+                div.modal-footer
+                    button.btn.btn-default(type="button" data-dismiss="modal") Cancel
+                    button.btn.btn-primary.btnSubmit(type="submit") Save

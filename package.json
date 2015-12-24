@@ -1,0 +1,26 @@
+{
+  "name": "desktop-application-nodejs",
+  "version": "1.0.0",
+  "description": "build desktop application with web technology in javascript/html/css by nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nguyenchilong/tutorial.git"
+  },
+  "keywords": [
+    "keywords"
+  ],
+  "author": "Long Nguyen (Nguyen Chi Long)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/nguyenchilong/tutorial/issues"
+  },
+  "homepage": "https://github.com/nguyenchilong/tutorial#readme",
+  "dependencies": {
+    "setimmediate": "^1.0.4",
+    "socket.io": "^1.3.7"
+  }
+}

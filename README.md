@@ -1,1 +1,2 @@
-learn more about use git for my jobs
+Build desktop application by NodeJS and AppJS
+run 'sh app.sh'
